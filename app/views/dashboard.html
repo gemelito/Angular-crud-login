@@ -1,0 +1,172 @@
+<h1 style="border-bottom: solid 1px;">{{title}}</h1>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">Ordens</h3>
+      </div>
+      <div class="panel-body">
+        <div class="list-group">
+          <div class="list-group-item">
+            <div class="row-picture">
+              <img class="circle" src="http://lorempixel.com/56/56/people/1" alt="icon">
+            </div>
+            <div class="row-content">
+              <h4 class="list-group-item-heading">Tile with avatar</h4>
+
+              <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus</p>
+            </div>
+          </div>
+          <div class="list-group-separator"></div>
+          <div class="list-group-item">
+            <div class="row-picture">
+              <img class="circle" src="http://lorempixel.com/56/56/people/6" alt="icon">
+            </div>
+            <div class="row-content">
+              <h4 class="list-group-item-heading">Tile with another avatar</h4>
+
+              <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+            </div>
+          </div>
+          <div class="list-group-separator"></div>
+          <div class="list-group-item">
+            <div class="row-action-primary checkbox">
+              <label><input type="checkbox"></label>
+            </div>
+            <div class="row-content">
+              <h4 class="list-group-item-heading">Tile with a checkbox in it</h4>
+
+              <p class="list-group-item-text">Donec id elit non mi risus varius blandit.</p>
+            </div>
+          </div>
+          <div class="list-group-separator"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <p class="top-well">Menu</p>
+    <div class="panel pane-default">
+      <div class="panel-body">
+        <table class="table table-striped table-hover ">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>pricing</th>
+            <th>Image url</th>
+            <th>Accions</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in items | orderBy:'-id'">
+              <td>{{item.name}}</td>
+              <td>{{item.description | cortarTexto:10 }} </td>
+              <td>{{item.pricing}}</td>
+              <td>{{item.imagenUrl}}</td>
+              <td>
+                <button class="btn btn-raised btn-warning" ng-click="EditarItem(item.id)" data-toggle="modal" data-target="#menuUpDate">
+                   <i class="material-icons">mode_edit</i>
+                </button>
+
+                <button class="btn btn-raised btn-danger" ng-click="EliminarItem(item.id)">
+                  <i class="material-icons">delete</i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!--Floatin button-->
+    <a class="btn btn-danger btn-fab" ng-show="loggedIn" style="bottom:45px; right:24px; position: fixed;" data-toggle="modal" data-target="#addMenu">
+      <i class="material-icons">add</i>
+    </a>
+
+    <!-- Modal For Add-->
+    <div class="modal fade" id="addMenu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+          <form ng-submit="addMenu()">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">New saucer</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group label-floating">
+                <label for="i5i" class="control-label">Name</label>
+                <input type="text" class="form-control" id="i5i" ng-model="menu.name" required>
+                <span class="help-block">Please enter a name</span>
+              </div>
+              <div class="form-group label-floating">
+                <label for="i5i" class="control-label">pricing</label>
+                <input type="number" class="form-control" id="i5i" ng-model="menu.pricing" required>
+                <span class="help-block">Please enter a pricing</span>
+              </div>
+              <div class="form-group label-floating">
+                <label for="t1" class="control-label">Please enter a description</label>
+                <textarea id="t1" class="form-control" ng-model="menu.description" required=""></textarea>
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="inputFile2">Imagen</label>
+                <input type="file" id="inputFile2" multiple="">
+                <input type="text" readonly="" class="form-control" ng-model="menu.imageUrl" placeholder="Browse2..." required="">
+                <span class="help-block">Please enter a imagen</span>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal For Edit-->
+    <div class="modal fade" id="menuUpDate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+          <form ng-submit="UpdateItem(menuedit.id)">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Edit saucer</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group label-floating">
+                <label for="i5i" class="control-label">Name</label>
+                <input type="text" class="form-control" id="i5i" ng-model="menuedit.name" required>
+                <span class="help-block">Please enter a name</span>
+              </div>
+              <div class="form-group label-floating">
+                <label for="i5i" class="control-label">pricing</label>
+                <input type="number" class="form-control" id="i5i" ng-model="menuedit.pricing" required>
+                <span class="help-block">Please enter a pricing</span>
+              </div>
+              <div class="form-group label-floating">
+                <label for="t1" class="control-label">Please enter a description</label>
+                <textarea id="t1" class="form-control" ng-model="menuedit.description" required=""></textarea>
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="inputFile2">Imagen</label>
+                <input type="file" id="inputFile2" multiple="">
+                <input type="text" readonly="" class="form-control" ng-model="menuedit.imageUrl" placeholder="Browse2..." required="">
+                <span class="help-block">Please enter a imagen</span>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+<span id="snackbar-success" data-toggle=snackbar data-content="Se guardo correctament"></span>
+<span id="snackbar-delete" data-toggle=snackbar data-content="Se elimno correctamente"></span>
+<span id="snackbar-update" data-toggle=snackbar data-content="Se actulizo correctamente"></span>
+<span id="snackbar-eror" data-toggle=snackbar data-content="No se pudo agregar la categoria"></span>

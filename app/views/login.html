@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <p class="top-well">Login</p>
+      <div class="well">
+        <div class="alert alert-danger text-center" ng-show="error">
+          <p>{{error}}</p>
+        </div>
+        <form role="form" ng-submit="LoginIn()">
+          <div class="form-group">
+            <label for="email">Username:</label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+              <input type="text" class="form-control" id="email" placeholder="gemelo" ng-model="username">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+              <input type="password" class="form-control" id="password" placeholder="Password" ng-model="password">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Log In</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
