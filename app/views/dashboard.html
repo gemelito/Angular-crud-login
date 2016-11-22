@@ -110,12 +110,15 @@
                 <label for="t1" class="control-label">Please enter a description</label>
                 <textarea id="t1" class="form-control" ng-model="menu.description" required=""></textarea>
               </div>
+
               <div class="form-group">
-                <label class="control-label" for="inputFile2">Imagen</label>
-                <input type="file" id="inputFile2" multiple="">
-                <input type="text" readonly="" class="form-control" ng-model="menu.imageUrl" placeholder="Browse2..." required="">
-                <span class="help-block">Please enter a imagen</span>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> Select
+                  </label>
+                </div>
               </div>
+              <div class="form-group">
 
             </div>
             <div class="modal-footer">
@@ -153,7 +156,7 @@
               <div class="form-group">
                 <label class="control-label" for="inputFile2">Imagen</label>
                 <input type="file" id="inputFile2" multiple="">
-                <input type="text" readonly="" class="form-control" ng-model="menuedit.imageUrl" placeholder="Browse2..." required="">
+                <input type="text" readonly="" class="form-control" uploader-model="menuedit.imageUrl" placeholder="Browse2..." required="">
                 <span class="help-block">Please enter a imagen</span>
               </div>
 

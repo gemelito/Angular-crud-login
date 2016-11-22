@@ -12,14 +12,21 @@ angular.module('menuApp')
     $scope.title = 'Dashboard';
     $scope.items = [];
     $scope.setInterval = 5000;
-    $scope.menu = { name: '', description: '', pricing: null, imageUrl: '' };
+    $scope.menu = { name: '', description: '', pricing: null, imageUrl:'' };
     $scope.menuedit = { name: '', description: '', pricing: null, imageUrl: ''};
+    $scope.file = 'pedro.png';
 
     $scope.clearMenu = function(){
-      $scope.menu = { name: '', description: '', pricing: null, imageUrl: '' };
+      $scope.menu = { name: '', description: '', pricing: null};
     }
 
     $scope.addMenu = function(){
+      /*
+      upload.uploadFile($scope.file, 'name').then(function(res){
+        console.log(res);
+      })
+      */
+
       ngDexie.put('menu', $scope.menu).then(function(){
         console.log('Se guardo el platillo');
         $scope.clearMenu();
@@ -64,4 +71,46 @@ angular.module('menuApp')
     $scope.getAll();
 
 
-  });
+});
+/*
+.directive('uploaderModel', ["$parse", function ($parse) {
+  return {
+    restrict: 'A',
+    link: function (scope, iElement, iAttrs)
+    {
+      iElement.on("change", function(e)
+      {
+        $parse(iAttrs.uploaderModel).assign(scope, iElement[0].files[0]);
+      });
+    }
+  };
+}])
+
+.service('upload', ["$http", "$q", function ($http, $q)
+{
+  this.uploadFile = function(file, name)
+  {
+    var deferred = $q.defer();
+    var formData = new FormData();
+    formData.append("name", name);
+    formData.append("file", file);
+    return $http.post("server.php", formData, {
+      headers: {
+        "Content-type": undefined
+      },
+      transformRequest: angular.identity
+    })
+    .success(function(res)
+    {
+      deferred.resolve(res);
+    })
+    .error(function(msg, code)
+    {
+      deferred.reject(msg);
+    })
+    return deferred.promise;
+  }
+}])
+*/
+
+
