@@ -111,14 +111,13 @@
                 <textarea id="t1" class="form-control" ng-model="menu.description" required=""></textarea>
               </div>
 
-              <div class="form-group">
+              <!--div class="form-group">
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox"> Select
+                    <input type="checkbox" ng-model="menu.imageUrl" value="food" align="center"> Food
                   </label>
                 </div>
-              </div>
-              <div class="form-group">
+              </div-->
 
             </div>
             <div class="modal-footer">
@@ -153,12 +152,14 @@
                 <label for="t1" class="control-label">Please enter a description</label>
                 <textarea id="t1" class="form-control" ng-model="menuedit.description" required=""></textarea>
               </div>
-              <div class="form-group">
-                <label class="control-label" for="inputFile2">Imagen</label>
-                <input type="file" id="inputFile2" multiple="">
-                <input type="text" readonly="" class="form-control" uploader-model="menuedit.imageUrl" placeholder="Browse2..." required="">
-                <span class="help-block">Please enter a imagen</span>
-              </div>
+
+              <!--div class="form-group">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" ng-model="menuedit.imageUrl" value="food" align="center"> Food
+                  </label>
+                </div>
+              </div-->
 
             </div>
             <div class="modal-footer">
@@ -173,3 +174,11 @@
 <span id="snackbar-delete" data-toggle=snackbar data-content="Se elimno correctamente"></span>
 <span id="snackbar-update" data-toggle=snackbar data-content="Se actulizo correctamente"></span>
 <span id="snackbar-eror" data-toggle=snackbar data-content="No se pudo agregar la categoria"></span>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $.material.init();
+        $.material.ripples();
+        $.material.input();
+        $.material.checkbox();
+      });
+    </script>

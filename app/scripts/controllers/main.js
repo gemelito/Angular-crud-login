@@ -10,6 +10,7 @@
 angular.module('menuApp')
   .controller('MainCtrl', function ($scope, ngDexie) {
     $scope.items = [];
+    $scope.baseurl = 'http://lorempixel.com/400/200/';
     var listMenu = function(){
       ngDexie.list('menu')
         .then(function(data){

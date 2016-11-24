@@ -12,9 +12,10 @@ angular.module('menuApp')
     $scope.title = 'Dashboard';
     $scope.items = [];
     $scope.setInterval = 5000;
-    $scope.menu = { name: '', description: '', pricing: null, imageUrl:'' };
-    $scope.menuedit = { name: '', description: '', pricing: null, imageUrl: ''};
-    $scope.file = 'pedro.png';
+    $scope.menu = { name: '', description: '', pricing: null, imageUrl:'food' };
+    $scope.menuedit = { name: '', description: '', pricing: null, imageUrl: 'food'};
+    $scope.baseurl = 'http://lorempixel.com/400/200';
+    //$scope.file = 'pedro.png';
 
     $scope.clearMenu = function(){
       $scope.menu = { name: '', description: '', pricing: null};
@@ -26,9 +27,7 @@ angular.module('menuApp')
         console.log(res);
       })
       */
-
       ngDexie.put('menu', $scope.menu).then(function(){
-        console.log('Se guardo el platillo');
         $scope.clearMenu();
         $('#addMenu').modal('hide');
         $scope.getAll();
@@ -53,7 +52,6 @@ angular.module('menuApp')
     //id para eliminar el item que nos pasaron
     $scope.UpdateItem = function(id){
       ngDexie.put('menu', $scope.menuedit).then(function(){
-        console.log('Se actualizado el platillo');
         $scope.clearMenu();
         $('#menuUpDate').modal('hide');
         $scope.getAll();
