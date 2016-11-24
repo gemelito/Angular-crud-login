@@ -8,7 +8,7 @@ angular.module('menuApp')
     };
   })
 
-  .controller('DashboardCtrl', function($scope, ngDexie){
+  .controller('DashboardCtrl', function($scope, ngDexie, $location, $rootScope){
     $scope.title = 'Dashboard';
     $scope.items = [];
     $scope.setInterval = 5000;

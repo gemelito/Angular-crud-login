@@ -15,10 +15,10 @@ angular.module('menuApp')
       ngDexie.list('menu')
         .then(function(data){
             $scope.items = data;
-            console.log($scope.items);
+            //console.log($scope.items);
         });
     };
-    //Initial refresh
+    //Initial Menu
     listMenu();
 
   });

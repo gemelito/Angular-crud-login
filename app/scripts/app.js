@@ -63,6 +63,16 @@ angular
         controller: 'LoginCtrl',
         controllerAs: 'login'
       })
+
+      .when('/logout',{
+       resolve: {
+          "check": function($location, $rootScope){
+              $rootScope.loggedIn = false;
+              $location.path('/');
+          }
+        }
+      })
+
       .otherwise({
         redirectTo: '/'
       });
