@@ -24,6 +24,7 @@ angular
     ngDexieProvider.setConfiguration(function (db) {
       db.version(1).stores({
           menu: "++id,name,description,pricing,imageUrl",
+          pedido: "++id,name,description,pricing,imageUrl",
       })
       db.on('error', function (err) {
           // Catch all uncatched DB-related errors and exceptions
