@@ -14,6 +14,7 @@ angular.module('menuApp')
     $scope.setInterval = 5000;
     $scope.menu = { name: '', description: '', pricing: null, imageUrl:'food' };
     $scope.menuedit = { name: '', description: '', pricing: null, imageUrl: 'food'};
+    $scope.itemsorden = [];
     $scope.baseurl = 'http://lorempixel.com/400/200';
     //$scope.file = 'pedro.png';
 
@@ -44,11 +45,20 @@ angular.module('menuApp')
       });
     }
 
+      /*ngDexie.getDb(function(db){
+        db.table('pedido').delete(6).then(function(){
+          $scope.getAll();
+          $("#snackbar-delete").snackbar("show");
+        })
+      });*/
+
+
     $scope.EditarItem = function(id){
       ngDexie.get('menu', id).then(function(data){
         $scope.menuedit = data;
       });
     }
+
     //id para eliminar el item que nos pasaron
     $scope.UpdateItem = function(id){
       ngDexie.put('menu', $scope.menuedit).then(function(){
@@ -65,8 +75,19 @@ angular.module('menuApp')
             $scope.items = data;
         });
     }
+
+    $scope.getAllOrden = function(){
+      ngDexie.list('pedido').then(function(data){
+        $scope.itemsorden = data;
+        console.log($scope.itemsorden);
+      });
+    }
     //Initial getAll
     $scope.getAll();
+    //Initial getAllOrden
+    $scope.getAllOrden();
+
+
 
 
 });

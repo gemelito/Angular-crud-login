@@ -20,7 +20,7 @@ angular
     'ngdexie.ui'
   ])
   .config(function(ngDexieProvider){
-    ngDexieProvider.setOptions({name: 'MenuApp', debug: false})
+    ngDexieProvider.setOptions({name: 'MenuAppDB', debug: false})
     ngDexieProvider.setConfiguration(function (db) {
       db.version(1).stores({
           menu: "++id,name,description,pricing,imageUrl",
