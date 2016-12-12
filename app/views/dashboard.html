@@ -1,4 +1,12 @@
 <div class="container">
+  <form>
+    <div class="form-group label-floating">
+      <input type="search" name="search" class="form-control" ng-model="search" placeholder="Search...">
+    </div>
+    <!--button class="btn btn-raised btn-success">
+       <i class="material-icons">search</i>
+    </button-->
+  </form>
   <h1 style="border-bottom: solid 1px;">{{title}}</h1>
   <div class="row">
     <div class="col-md-4">
@@ -8,7 +16,7 @@
         </div>
         <div class="panel-body">
 
-          <div class="list-group" ng-repeat="orden in itemsorden">
+          <div class="list-group" ng-repeat="orden in itemsorden | orderBy:'-id' | filter:search as orden ">
             <div class="list-group-item">
               <div class="row-picture">
                 <img class="circle" src="http://lorempixel.com/56/56/food" alt="icon">
@@ -19,7 +27,11 @@
                 <p class="list-group-item-text">{{orden.description}}</p>
               </div>
             </div>
-            <div class="list-group-separator"></div>
+            <div class="list-group-separator ">
+              <button class="btn btn-raised btn-danger" ng-click="deleteOrden(orden.id)">
+                <i class="material-icons">delete</i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -37,16 +49,14 @@
               <th>Name</th>
               <th>Description</th>
               <th>pricing</th>
-              <th>Image url</th>
               <th>Accions</th>
             </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="item in items | orderBy:'-id'">
+              <tr ng-repeat="item in items | orderBy:'-id' | filter:search as item ">
                 <td>{{item.name}}</td>
-                <td>{{item.description | cortarTexto:10 }} </td>
+                <td>{{item.description | cortarTexto:20 }} </td>
                 <td>{{item.pricing}}</td>
-                <td>{{item.imagenUrl}}</td>
                 <td>
                   <button class="btn btn-raised btn-warning" ng-click="EditarItem(item.id)" data-toggle="modal" data-target="#menuUpDate">
                      <i class="material-icons">mode_edit</i>

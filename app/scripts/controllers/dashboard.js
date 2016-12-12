@@ -19,7 +19,7 @@ angular.module('menuApp')
     //$scope.file = 'pedro.png';
 
     $scope.clearMenu = function(){
-      $scope.menu = { name: '', description: '', pricing: null};
+      $scope.menu = { name: '', description: '', pricing: null, imageUrl:'food'};
     }
 
     $scope.addMenu = function(){
@@ -82,6 +82,17 @@ angular.module('menuApp')
         console.log($scope.itemsorden);
       });
     }
+
+    $scope.deleteOrden = function(id){
+      ngDexie.getDb(function(db){
+        db.table('pedido').delete(id).then(function(){
+          $scope.getAllOrden();
+          $("#snackbar-delete").snackbar("show");
+        })
+      });
+    }
+
+    $scope.search;
     //Initial getAll
     $scope.getAll();
     //Initial getAllOrden

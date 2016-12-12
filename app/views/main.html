@@ -1,13 +1,13 @@
 <!--Cover-->
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+<div class='video-container'>
+  <!-- Width and height attrs are ok on media and images -->
+  <video autoplay loop poster='/images/paste.jpg' style="width: 100%">
+    <source src='/videos/paste.mp4' type='video/mp4'>
+    <source src='/videos/paste.webm' type='video/webm'>
+  </video>
 </div>
 <!--End-->
+<br><br><br>
 <div class="container custom-container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" ng-repeat="item in items">
@@ -23,10 +23,10 @@
           </div>
           <footer class="card-footer">
             <div class="row">
-              <div class="col-md-6 col-xs-6 no-padding no-margin tex-left">
+              <!--div class="col-md-6 col-xs-6 no-padding no-margin tex-left">
                 <button class="btn btn-flat">Share</button>
-              </div>
-              <div class="col-md-6 col-xs-6 no-padding no-margin text-right">
+              </div-->
+              <div class="no-padding no-margin text-right">
                 <button class="btn btn-flat" ng-click="addOrden(item)">Orden</button>
               </div>
             </div>
